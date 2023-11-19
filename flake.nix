@@ -54,6 +54,9 @@
                   };
                 };
               };
+              scripts.envclear.exec = ''
+              rm -rf ./.devenv ./.direnv
+              '';
             }];
           };
         });
