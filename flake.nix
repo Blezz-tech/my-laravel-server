@@ -14,10 +14,21 @@
           default = devenv.lib.mkShell {
             inherit inputs pkgs;
             modules = [{
+
+              languages = {
+                javascript.enable = true;
+                javascript.package = pkgs.nodejs_20;
+
+                php.enable = true;
+                php.package = pkgs.php81.buildEnv {
+                  extraConfig = ''
+                    memory_limit = 256m
+                  '';
+                };
+              };
+
               packages = with pkgs; [
                 # mariadb
-                nodejs_20
-                php81
               ];
               # https://devenv.sh/reference/options/
               # services.mysql = {
