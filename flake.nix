@@ -34,7 +34,7 @@
               # https://devenv.sh/reference/options/
               services.mysql = {
                 enable = true;
-              #   package = pkgs.mariadb;
+                package = pkgs.mariadb;
                 initialDatabases = [{ name = "my-laravel-server-db"; }];
                 ensureUsers = [
                   {
