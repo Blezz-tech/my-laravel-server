@@ -21,6 +21,7 @@
 
                 php.enable = true;
                 php.package = pkgs.php81.buildEnv {
+                  extensions = { all, enabled }: with all; enabled ++ [ redis ];
                   extraConfig = ''
                     memory_limit = 256m
                   '';
@@ -31,28 +32,28 @@
                 # mariadb
               ];
               # https://devenv.sh/reference/options/
-              # services.mysql = {
-              #   enable = true;
+              services.mysql = {
+                enable = true;
               #   package = pkgs.mariadb;
-              #   initialDatabases = [{ name = "my-server-db"; }];
-              #   ensureUsers = [
-              #     {
-              #       name = "root";
-              #       password = "";
-              #       ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
-              #     }
-              #   ];
-              #   settings = {
-              #     # mysql = {
-              #     #   user = "username";
-              #     #   password = "test";
-              #     # };
-              #     mysqld = {
-              #       # "sql_require_primary_key" = "on";
-              #       "bind_address" = "localhost";
-              #     };
-              #   };
-              # };
+                initialDatabases = [{ name = "my-laravel-server-db"; }];
+                ensureUsers = [
+                  {
+                    name = "root";
+                    password = "";
+                    ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
+                  }
+                ];
+                settings = {
+                  # mysql = {
+                  #   user = "username";
+                  #   password = "test";
+                  # };
+                  mysqld = {
+                    # "sql_require_primary_key" = "on";
+                    "bind_address" = "localhost";
+                  };
+                };
+              };
             }];
           };
         });
