@@ -16,8 +16,7 @@
             modules = [{
               packages = with pkgs; [
                 # mariadb
-                nodejs-16_x
-                yarn
+                nodejs_20
                 php81
               ];
               # https://devenv.sh/reference/options/
