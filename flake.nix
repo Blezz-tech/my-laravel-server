@@ -21,42 +21,48 @@
 
                 php.enable = true;
                 php.package = pkgs.php81.buildEnv {
-                  extensions = { all, enabled }: with all; enabled ++ [ redis ];
-                  extraConfig = ''
-                    memory_limit = 256m
-                  '';
+                  # extensions = { all, enabled }: with all; enabled ++ [ redis ];
+                  # extraConfig = ''
+                  #   memory_limit = 256m
+                  # '';
                 };
               };
 
               packages = with pkgs; [
                 # mariadb
               ];
-              # https://devenv.sh/reference/options/
-              services.mysql = {
+
+              services.nginx = {
                 enable = true;
-                package = pkgs.mariadb;
-                initialDatabases = [{ name = "my-laravel-server-db"; }];
-                ensureUsers = [
-                  {
-                    name = "root";
-                    password = "";
-                    ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
-                  }
-                ];
-                settings = {
-                  # mysql = {
-                  #   user = "username";
-                  #   password = "test";
-                  # };
-                  mysqld = {
-                    # "sql_require_primary_key" = "on";
-                    "bind_address" = "localhost";
-                  };
-                };
               };
-              scripts.envclear.exec = ''
-              rm -rf ./.devenv ./.direnv
-              '';
+              
+              # services.mysql = {
+              #   enable = true;
+              #   package = pkgs.mariadb;
+              #   initialDatabases = [{ name = "my-laravel-server-db"; }];
+              #   ensureUsers = [
+              #     {
+              #       name = "root";
+              #       password = "";
+              #       ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
+              #     }
+              #   ];
+              #   settings = {
+              #     # mysql = {
+              #     #   user = "username";
+              #     #   password = "test";
+              #     # };
+              #     mysqld = {
+              #       # "sql_require_primary_key" = "on";
+              #       "bind_address" = "localhost";
+              #     };
+              #   };
+              # };
+
+              scripts = {
+                EnvClearAll.exec = "rm -rf ./.devenv ./.direnv";
+                EnvClearStatic.exec = "rm -rf ./.devenv/state";
+              };
             }];
           };
         });
