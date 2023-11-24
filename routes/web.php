@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/', function () {
+//     return view('<h1>hello, world!</h1>');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    $sum = 2 + 3;
+    $name = "Kate";
+    return view('home', ['num' => $sum, 'str' => $name]);
 });
+
+// Route::get('/about', function () {
+//     return view('about');
+// });
