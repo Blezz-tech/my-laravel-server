@@ -15,79 +15,62 @@
             inherit inputs pkgs;
             modules = [{
 
-              languages = {
-                javascript.enable = true;
-                javascript.package = pkgs.nodejs_20;
-
-                php.enable = true;
-                php.package = pkgs.php81.buildEnv {
-                  # extensions = { all, enabled }: with all; enabled ++ [ redis ];
-                  # extraConfig = ''
-                  #   memory_limit = 256m
-                  # '';
-                };
+              languages.javascript = {
+                enable = true;
+                package = pkgs.nodejs_20;
               };
 
-              packages = with pkgs; [
-                # mariadb
-              ];
-
-              certificates = [
-                "example.com"
-              ];
-
-              hosts = {
-                "example.app" = "127.0.0.1";
+              languages.php = {
+                enable = true;
+                version = "8.1";
               };
+
+              # certificates = [
+              #   "example.com"
+              # ];
+
+              # hosts = {
+              #   "example.app" = "127.0.0.1";
+              # };
 
               services.nginx = {
                 enable = true;
                 httpConfig = ''
                   server {
-                    listen 4430;
+                    listen 8080;
+
                     server_name example.app;
 
-                    location / {
-                      proxy_pass http://127.0.0.1:9000/;
-                      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                      proxy_set_header X-Forwarded-Proto $scheme;
-                      proxy_set_header X-Forwarded-Host $host;
-                      proxy_set_header X-Forwarded-Prefix /;
-                    }
+                    charset utf-8;
 
-                    location /api {
-                      proxy_pass http://127.0.0.1:5000/;
-                      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                      proxy_set_header X-Forwarded-Proto $scheme;
-                      proxy_set_header X-Forwarded-Host $host;
-                      proxy_set_header X-Forwarded-Prefix /api;
+                    root /home/jenya/git-repos/my-laravel-server;
+
+                    location / {
+                      autoindex on;
+                      autoindex_localtime on;
+                      autoindex_exact_size off;
                     }
                   }
                 '';
               };
 
-              # services.mysql = {
-              #   enable = true;
-              #   package = pkgs.mariadb;
-              #   initialDatabases = [{ name = "my-laravel-server-db"; }];
-              #   ensureUsers = [
-              #     {
-              #       name = "root";
-              #       password = "";
-              #       ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
-              #     }
-              #   ];
-              #   settings = {
-              #     # mysql = {
-              #     #   user = "username";
-              #     #   password = "test";
-              #     # };
-              #     mysqld = {
-              #       # "sql_require_primary_key" = "on";
-              #       "bind_address" = "localhost";
-              #     };
-              #   };
-              # };
+              services.mysql = {
+                enable = true;
+                package = pkgs.mariadb;
+                initialDatabases = [{ name = "my-laravel-server-db"; }];
+                ensureUsers = [
+                  {
+                    name = "root";
+                    password = "";
+                    ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
+                  }
+                ];
+                settings = {
+                  mysqld = {
+                    "bind_address" = "localhost";
+                  };
+                };
+              };
 
               scripts = {
                 EnvClearAll.exec = "rm -rf ./.devenv ./.direnv";
