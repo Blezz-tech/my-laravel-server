@@ -32,10 +32,40 @@
                 # mariadb
               ];
 
+              certificates = [
+                "example.com"
+              ];
+
+              hosts = {
+                "example.app" = "127.0.0.1";
+              };
+
               services.nginx = {
                 enable = true;
+                httpConfig = ''
+                  server {
+                    listen 4430;
+                    server_name example.app;
+
+                    location / {
+                      proxy_pass http://127.0.0.1:9000/;
+                      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                      proxy_set_header X-Forwarded-Proto $scheme;
+                      proxy_set_header X-Forwarded-Host $host;
+                      proxy_set_header X-Forwarded-Prefix /;
+                    }
+
+                    location /api {
+                      proxy_pass http://127.0.0.1:5000/;
+                      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                      proxy_set_header X-Forwarded-Proto $scheme;
+                      proxy_set_header X-Forwarded-Host $host;
+                      proxy_set_header X-Forwarded-Prefix /api;
+                    }
+                  }
+                '';
               };
-              
+
               # services.mysql = {
               #   enable = true;
               #   package = pkgs.mariadb;
