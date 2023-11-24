@@ -27,6 +27,20 @@ Route::get('/', function () {
     return view('home', ['num' => $sum, 'str' => $name]);
 });
 
-// Route::get('/about', function () {
-//     return view('about');
-// });
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/contact', function() {
+    return view('contact');
+});
+
+Route::post('/send-contact', function() {
+    return view('send-contact');
+});
+
+Route::redirect('/about', '/');
+
+Route::fallback(function () {
+    return "Запрашиваемой страницы нет. Перейдите на главную";
+});
