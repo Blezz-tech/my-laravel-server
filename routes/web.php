@@ -53,5 +53,5 @@ Route::post('/send-contact', function() {
 Route::redirect('/about', '/');
 
 Route::fallback(function () {
-    return "Запрашиваемой страницы нет. Перейдите на главную <br> <a href="{{route('home')}}">На главную</a>";
+    return "Запрашиваемой страницы нет. Перейдите на главную <br> <a href=". route('home') . ">На главную</a>";
 });
