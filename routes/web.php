@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,8 @@ Route::post('/send-contact', function() {
 });
 
 Route::redirect('/about', '/');
+
+Route::resource('/photos', PhotoController::class);
 
 Route::fallback(function () {
     return "Запрашиваемой страницы нет. Перейдите на главную <br> <a href=". route('home') . ">На главную</a>";

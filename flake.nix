@@ -21,23 +21,23 @@
               };
 
 
-              # services.mysql = {
-              #   enable = true;
-              #   package = pkgs.mariadb;
-              #   initialDatabases = [{ name = "my-laravel-server-db"; }];
-              #   ensureUsers = [
-              #     {
-              #       name = "root";
-              #       password = "";
-              #       ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
-              #     }
-              #   ];
-              #   settings = {
-              #     mysqld = {
-              #       "bind_address" = "localhost";
-              #     };
-              #   };
-              # };
+              services.mysql = {
+                enable = true;
+                package = pkgs.mariadb;
+                initialDatabases = [{ name = "my-laravel-server-db"; }];
+                ensureUsers = [
+                  {
+                    name = "root";
+                    password = "";
+                    ensurePermissions = { "root.*" = "ALL PRIVILEGES"; };
+                  }
+                ];
+                settings = {
+                  mysqld = {
+                    "bind_address" = "localhost";
+                  };
+                };
+              };
 
               scripts = {
                 EnvClearAll.exec = "rm -rf ./.devenv ./.direnv";
