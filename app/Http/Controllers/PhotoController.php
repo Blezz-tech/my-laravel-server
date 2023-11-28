@@ -27,7 +27,8 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        return "Здесь будет сохранение данных о фотографии $request->name";
     }
 
     /**
@@ -35,7 +36,7 @@ class PhotoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return "Здесь будет информация о фотографии с номером $id";
     }
 
     /**
@@ -43,7 +44,7 @@ class PhotoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('photos.edit', ['id' => $id]);
     }
 
     /**
