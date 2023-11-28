@@ -52,7 +52,7 @@ class PhotoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Здесь будет изменение данных о фото с номером $id Новое имя фот: $requset->name";
     }
 
     /**

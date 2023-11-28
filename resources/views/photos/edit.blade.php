@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-
+    <h1>Редактирование фото с номером {{$id}}</h1>
+    <form action="{{route('photos.update', $id)}}" method="post">
+        @method('PUT')
+        @csrf
+        <input type="text" name="name">
+        <input type="submit" value="Сохранить фотографию">
+    </form>
 </body>
 </html>
