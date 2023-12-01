@@ -16,10 +16,10 @@ class CatalogPhoto extends Model
      */
     protected $table = 'catalog_photo';
 
-    @var int
+    // @var int
     protected $primaryKey = 'id';
 
-    @var bool
+    // @var bool
     public $incrementing = true;
 
 

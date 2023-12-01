@@ -10,7 +10,16 @@
 
 <body>
     <h1>Hello, world from view</h1>
-    <p>The paramets are: {{$num}} and {{$str}}</p>
+    <p>The paramets are: {{ $num }} and {{ $str }}</p>
+    <table>
+
+            @foreach ($photos as $item)
+                <tr>
+                    <td>{{ $item->name }}</td>
+                </tr>
+            @endforeach
+
+    </table>
 </body>
 
 </html>
