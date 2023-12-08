@@ -16,3 +16,8 @@
   </section>
 
 @endsection
+
+
+@section('title')
+    @parent : О нас
+@endsection

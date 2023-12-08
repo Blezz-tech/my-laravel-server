@@ -30,12 +30,12 @@ use App\Http\Controllers\PhotoController;
 // });
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['title' => 'Главная']);
 })->name('home');
 
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', ['title' => 'О нас']);
 })->name('about');
 
 

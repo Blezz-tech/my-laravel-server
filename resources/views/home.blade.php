@@ -230,3 +230,7 @@
         </div>
     </div>
 @endsection
+
+@section('title')
+    @parent : Главная
+@endsection
