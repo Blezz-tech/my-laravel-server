@@ -34,6 +34,11 @@ Route::get('/', function () {
 })->name('home');
 
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+
 // Route::get('/main', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
@@ -44,7 +49,7 @@ Route::post('/sendcontact', function () {
     return view('sendcontact');
 });
 
-Route::redirect('/about', '/');
+// Route::redirect('/about', '/');
 
 Route::resource('/photos', PhotoController::class);
 
