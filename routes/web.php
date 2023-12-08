@@ -23,32 +23,21 @@ use App\Http\Controllers\PhotoController;
 //     return view('<h1>hello, world!</h1>');
 // });
 
-// Route::get('/', function () {
-//     $sum = 2 + 3;
-//     $name = "Kate";
-//     return view('home', ['num' => $sum, 'str' => $name]);
-// });
+// Route::get('/', 'HomeController@index')->name('home');
 
-// Route::get('/', function () {
-//     return view('home');
+// Route::get('/about', function () {
+//     return view('about');
 // });
-
-// Route::get('/', 'HomeController@index')->name('index');
 
 
 Route::get('/main', [HomeController::class, 'index'])->name('home');
 
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function() {
+Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::post('/send-contact', function() {
-    return view('send-contact');
+Route::post('/sendcontact', function () {
+    return view('sendcontact');
 });
 
 Route::redirect('/about', '/');
@@ -56,5 +45,8 @@ Route::redirect('/about', '/');
 Route::resource('/photos', PhotoController::class);
 
 Route::fallback(function () {
-    return "Запрашиваемой страницы нет. Перейдите на главную <br> <a href=". route('home') . ">На главную</a>";
+    return "Запрашиваемой страницы нет, перейдите <a href=" . route('home') . ">на главную</a>";
 });
+
+
+

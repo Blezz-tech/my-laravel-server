@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{route('photos.store')}}" method="post">
+    <form action="{{route('photos.store')}}" method="POST">
         @csrf
         <input type="text" name="name">
         <input type="submit" value="Сохранить фотографию">

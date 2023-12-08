@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CatalogPhoto;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index() {
-        $sum = 2 + 12;
-        $name = "Kate";
-        // $photos = CatalogPhoto::all();
+    public function index()
+    {
 
-        // $catalogPhoto = new CatalogPhoto;
-        // $catalogPhoto->name = "test1";
-        // $catalogPhoto->save();
+        // DB::insert('insert into catalog_photo (name) values (?)', ['Cars']);
 
-        $photos = CatalogPhoto::where('name', 'test')->get();
+        // DB::update('update catalog_photo set name = ? where id = ?', ['Цветочки', 3]);
 
-        return view('home', ['num' => $sum, 'str' => $name, 'photos' => $photos]);
+        //    $photos = DB::select("select * from catalog_photo where name=?", ['Cars']);
+
+        // DB::delete('delete from catalog_photo where id = ?', ['3']);
+
+
+        DB::statement('RENAME TABLE photossss TO photos');
+        $photos = DB::select("select * from photos");
+
+        dd($photos);
+        // return $photos;
     }
 }

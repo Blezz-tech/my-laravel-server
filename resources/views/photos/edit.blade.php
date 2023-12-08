@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1>Редактирование фото с номером {{$id}}</h1>
-    <form action="{{route('photos.update', $id)}}" method="post">
+    <form action="{{route('photos.update', $id)}}" method="POST">
         @method('PUT')
         @csrf
         <input type="text" name="name">
-        <input type="submit" value="Сохранить фотографию">
+        <input type="submit" value="Изменить фотографию">
     </form>
 </body>
 </html>
