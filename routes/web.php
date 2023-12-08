@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoController;
@@ -19,25 +20,22 @@ use App\Http\Controllers\PhotoController;
 //     return view('welcome');
 // });
 
-// Route::get('/', function () {
-//     return view('<h1>hello, world!</h1>');
-// });
-
-// Route::get('/', 'HomeController@index')->name('home');
-
 // Route::get('/about', function () {
 //     return view('about');
 // });
 
 Route::get('/', function () {
-    return view('home', ['title' => 'Главная']);
+    $photos = DB::select('select * from photos where id>?', [2]);
+
+    return view('home', ['title' => 'Главная', 'photos' => $photos]);
 })->name('home');
 
-
 Route::get('/about', function () {
+
     return view('about', ['title' => 'О нас']);
 })->name('about');
 
+// Route::get('/', 'HomeController@index')->name('home');
 
 // Route::get('/main', [HomeController::class, 'index'])->name('home');
 
