@@ -25,7 +25,7 @@ use App\Http\Controllers\PhotoController;
 // });
 
 Route::get('/', function () {
-    $photos = DB::select('select * from photos where id>?', [2]);
+    $photos = DB::select('select * from photos where id>?', [0]);
 
     return view('home', ['title' => 'Главная', 'photos' => $photos]);
 })->name('home');

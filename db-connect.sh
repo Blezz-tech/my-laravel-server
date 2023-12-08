@@ -1,1 +1,1 @@
-mariadb -uroot my_laravel_server_db
+mariadb -uroot my-laravel-server-db
