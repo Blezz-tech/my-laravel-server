@@ -29,8 +29,12 @@ use App\Http\Controllers\PhotoController;
 //     return view('about');
 // });
 
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
-Route::get('/main', [HomeController::class, 'index'])->name('home');
+
+// Route::get('/main', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
     return view('contact');
