@@ -20,6 +20,7 @@
                 version = "8.1";
               };
 
+              languages.javascript.enable = true;
 
               services.mysql = {
                 enable = true;
