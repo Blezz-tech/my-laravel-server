@@ -23,7 +23,7 @@
                 @forelse ($photos as $photo)
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="{{$photo->path}}" alt="">
+                            <img src="{{$photo->path}}" alt=""  w-100% height="300">
 
                             <div class="card-body">
                                 <p class="card-text">{{ $photo->name }}</p>

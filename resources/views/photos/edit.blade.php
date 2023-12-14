@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Редактирование фото с номером {{$id}}</h1>
-    <form action="{{route('photos.update', $id)}}" method="POST">
-        @method('PUT')
-        @csrf
-        <input type="text" name="name">
-        <input type="submit" value="Изменить фотографию">
-    </form>
-</body>
-</html>
+@extends('layouts.layout_photos')
+
+@section('content')
+    <div class="container mt-4">
+        <h1>Редактирование фото с номером {{ $id }}</h1>
+        <form action="{{ route('photos.update', $id) }}" method="POST">
+            @method('PUT')
+            @csrf
+            <table class="table">
+                <tr>
+                    <td><label for="name">Имя фото</label></td>
+                    <td><input id="name" type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="path">Путь к фото</label></td>
+                    <td><input id="path" type="text" name="path" required></td>
+                </tr>
+            </table>
+            <input type="submit" value="Изменить фотографию">
+        </form>
+    </div>
+@endsection
+
+@section('title')
+    @parent : Фото успешно добавлено
+@endsection

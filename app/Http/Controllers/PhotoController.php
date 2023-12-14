@@ -21,7 +21,6 @@ class PhotoController extends Controller
      */
     public function create()
     {
-
         return view('photos.create');
     }
 
@@ -30,9 +29,9 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        DB::insert('insert into photos (name) values (?)', [$request->name]);
-        return "Сохранены данные о фотографии $request->name";
+        // dd($request->parameters);
+        DB::insert('insert into photos (name, path) values (?, ?)', [$request->name, $request->path]);
+        return view('photos.accomplished', ['name' => $request->name, 'path' => $request->path]);
     }
 
     /**
@@ -40,8 +39,8 @@ class PhotoController extends Controller
      */
     public function show($id)
     {
-        $photos = DB::select('select * from photos where id = ?', [$id]);
-        return "Название фотографии с номером $id " . $photos[0]->name;
+        $photo = DB::select('select * from photos where id = ?', [$id])[0];
+        return view('photos.show', ['id' => $id, 'name' => $photo->name, 'path' => $photo->path]);
     }
 
     /**
@@ -57,8 +56,8 @@ class PhotoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::update('update photos set name = ? where id = ?', [$request->name, $id]);
-        return "Изменены данные о фото с номером $id Новое имя фото: $request->name";
+        DB::update('update photos set name = ?, path = ? where id = ?', [$request->name, $request->path, $id]);
+        return view('photos.updated', ['name' => $request->name, 'path' => $request->path]);
     }
 
     /**
@@ -67,6 +66,6 @@ class PhotoController extends Controller
     public function destroy($id)
     {
         DB::delete('delete from photos where id = ?', [$id]);
-        return "Данная фотография удалена $id";
+        return view('photos.deleted', ['id' => $id]);
     }
 }

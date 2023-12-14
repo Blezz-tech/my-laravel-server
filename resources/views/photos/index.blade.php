@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.layout_photos')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('content')
+    <div class="container mt-4">
+        <h1>Список фотографий</h1>
+        <a href="{{ route('photos.create') }}">Создать фото</a>
+        <table class="table">
+            <tr>
+                <td>Имя</td>
+                <td>Путь</td>
+                <td></td>
+                <td></td>
+            </tr>
+            @forelse ($photos as $photo)
+                <tr>
+                    <td>{{ $photo->name }}</td>
+                    <td>{{ $photo->path }}</td>
+                    <td><a href="{{ route('photos.edit', $photo->id) }}">Редактировать</a></td>
+                    <td><a href="{{ route('photos.show', $photo->id) }}">Просмотреть</a></td>
+                    <td>
+                        <form action="{{ route('photos.destroy', $photo->id) }}">
+                            @method('Delete')
+                            <input class="btn btn-primary" type="submit" value="Удалить">
+                        </form>
+                    </td>
+                </tr>
+            @empty
+            @endforelse
+        </table>
+    </div>
+@endsection
 
-<body>
-    <h1>Список фотографий</h1>
-    <ul>
-        <li>Фото 1 {{ $photos[0]->id }} с названием {{ $photos[0]->name }}  <a
-                href="{{ route('photos.show', $photos[0]->id) }}"> Показать</a>
-            <a href="{{ route('photos.edit', $photos[0]->id) }}"> Редактировать</a>
-            <a href="{{ route('photos.destroy', $photos[0]->id) }}"> Удалить</a>
-        </li>
-        <li>Фото 2 {{ $photos[1]->id }} с названием {{ $photos[1]->name }}<a
-                href="{{ route('photos.show', $photos[1]->id) }}"> Показать</a>
-                <a href="{{ route('photos.edit', $photos[1]->id) }}"> Редактировать</a>
-                <a href="{{ route('photos.destroy', $photos[1]->id) }}"> Удалить</a></li>
-    </ul>
-</body>
-
-</html>
+@section('title')
+    @parent : Все фото
+@endsection

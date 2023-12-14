@@ -24,20 +24,22 @@ use App\Http\Controllers\PhotoController;
 //     return view('about');
 // });
 
-Route::get('/', function () {
-    $photos = DB::select('select * from photos where id>?', [0]);
-
-    return view('home', ['title' => 'Главная', 'photos' => $photos]);
-})->name('home');
-
-Route::get('/about', function () {
-
-    return view('about', ['title' => 'О нас']);
-})->name('about');
-
 // Route::get('/', 'HomeController@index')->name('home');
 
 // Route::get('/main', [HomeController::class, 'index'])->name('home');
+
+// Route::redirect('/about', '/');
+
+Route::get('/', function () {
+    $photos = DB::select('select * from photos');
+    return view('home', ['title' => 'Главная', 'photos' => $photos]);
+})->name('home');
+
+
+
+Route::get('/about', function () {
+    return view('about', ['title' => 'О нас']);
+})->name('about');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -46,8 +48,6 @@ Route::get('/contact', function () {
 Route::post('/sendcontact', function () {
     return view('sendcontact');
 });
-
-// Route::redirect('/about', '/');
 
 Route::resource('/photos', PhotoController::class);
 
