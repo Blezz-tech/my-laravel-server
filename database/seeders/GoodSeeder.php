@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class GoodSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class GoodSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('goods')->ignore_user_abort([
+        DB::table('goods')->insert([
             'title' => Str::random(10),
             'description' => Str::random(10),
             'price' => rand(100, 1000),
