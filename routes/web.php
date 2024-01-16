@@ -26,7 +26,7 @@ use App\Http\Controllers\PhotoController;
 
 // Route::get('/', 'HomeController@index')->name('home');
 
-// Route::get('/main', [HomeController::class, 'index'])->name('home');
+Route::get('/main', [HomeController::class, 'index'])->name('home');
 
 // Route::redirect('/about', '/');
 

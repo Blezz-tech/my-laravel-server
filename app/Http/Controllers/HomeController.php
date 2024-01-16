@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $requset)
     {
 
         // DB::insert('insert into catalog_photo (name) values (?)', ['Cars']);
@@ -19,10 +19,13 @@ class HomeController extends Controller
         // DB::delete('delete from catalog_photo where id = ?', ['3']);
 
 
-        DB::statement('RENAME TABLE photossss TO photos');
-        $photos = DB::select("select * from photos");
+        // DB::statement('RENAME TABLE photossss TO photos');
+        // $photos = DB::select("select * from photos");
 
-        dd($photos);
+        // dd($photos);
         // return $photos;
+
+        dump($requset->session()->all());
+
     }
 }
