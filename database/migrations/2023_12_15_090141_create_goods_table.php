@@ -17,7 +17,13 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('price', 6, 2);
             $table->timestamps();
+        });
 
+        Schema::create('photos', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 256);
+            $table->string('path', 255);
+            $table->timestamps();
         });
     }
 
