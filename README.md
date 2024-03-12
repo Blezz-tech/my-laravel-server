@@ -97,3 +97,11 @@ php artisan migrate:generate
 ```
 
 Помощь по [Laravel Migrations Generator](https://github.com/kitloong/laravel-migrations-generator)
+
+## генератор моделей
+
+```bash
+php artisan code:models
+```
+
+Помощь по [Laracademy Generators](https://github.com/laracademy/generators)
