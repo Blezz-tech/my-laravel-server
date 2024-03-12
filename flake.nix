@@ -25,7 +25,7 @@
               services.mysql = {
                 enable = true;
                 package = pkgs.mariadb;
-                initialDatabases = [{ name = "my-laravel-server-db"; }];
+                initialDatabases = [{ name = "markuseo"; }];
                 ensureUsers = [
                   {
                     name = "root";
