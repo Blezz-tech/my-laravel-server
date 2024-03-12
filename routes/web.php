@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Country;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -66,8 +67,8 @@ Route::get('testpost', function () {
 
     // Post::create(['title' => 'Интересная статья', 'content' => 'Текст интересной статьи']);
 
-    // $result = Post::find(1);
-    // dd($result);
+    $result = Post::find(1);
+    dd($result);
 
     // $result = Post::where('title', 'Интересная статья')->select('content')->get();
     // dd($result);
@@ -82,4 +83,10 @@ Route::get('testpost', function () {
     //Post::destroy([2,3]);
 
     return 'Запись добавлена';
+});
+
+
+Route::get('testcountry', function () {
+    $data = Country::limit(5)->get();
+    dd($data);
 });

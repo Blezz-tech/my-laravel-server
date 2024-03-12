@@ -105,3 +105,9 @@ php artisan code:models
 ```
 
 Помощь по [Laracademy Generators](https://github.com/laracademy/generators)
+
+## Загрузка сидеров в БД
+
+```bash
+php artisan db:seed
+```
