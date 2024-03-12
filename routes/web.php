@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +87,29 @@ Route::get('testpost', function () {
 });
 
 
-Route::get('testcountry', function () {
-    $data = Country::limit(5)->get();
-    dd($data);
-});
+// Route::get('testcountry', function () {
+//     // $data = Country::limit(5)->get();
+//     // dd($data);
+
+//     // $data = Country::select('code', 'Name')->where('Name', 'like', 'A%')->get();
+//     // dd($data);
+
+//     $data = Country::find('ARG');
+//     dd($data);
+// });
+
+Route::get('/testcountry', function (Request $request) {
+    $country_text = $request->country_text;
+
+    $data = [];
+
+    $country = Country::select('Name', 'Continent', 'SurfaceArea');
+
+    if (is_null($country_text) || $country == "") {
+        $data = $country->get();
+    } else {
+        $data = $country->where('Name', 'like', $country_text . '%')->get();
+    }
+
+    return view('testcountry', ['title' => 'Страны', 'countries' => $data]);
+})->name('testcountry');
