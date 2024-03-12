@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PhotosTableSeeder extends Seeder
+class PersonalAccessTokensTableSeeder extends Seeder
 {
 
     /**
@@ -16,7 +16,7 @@ class PhotosTableSeeder extends Seeder
     {
         
 
-        \DB::table('photos')->delete();
+        \DB::table('personal_access_tokens')->delete();
         
         
         
