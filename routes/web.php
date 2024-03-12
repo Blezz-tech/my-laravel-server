@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -57,3 +58,13 @@ Route::fallback(function () {
 
 
 
+Route::get('testpost', function () {
+    // $post = new Post;
+    // $post->title = "Новая статья";
+    // $post->content = "Содержимое новой статьи";
+    // $post->save();
+
+    Post::create(['title' => 'Интересная статья', 'content' => 'Текст интересной статьи']);
+
+    return 'Запись добавлена';
+});
