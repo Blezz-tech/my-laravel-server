@@ -64,7 +64,22 @@ Route::get('testpost', function () {
     // $post->content = "Содержимое новой статьи";
     // $post->save();
 
-    Post::create(['title' => 'Интересная статья', 'content' => 'Текст интересной статьи']);
+    // Post::create(['title' => 'Интересная статья', 'content' => 'Текст интересной статьи']);
+
+    // $result = Post::find(1);
+    // dd($result);
+
+    // $result = Post::where('title', 'Интересная статья')->select('content')->get();
+    // dd($result);
+
+    // Post::find(1)->update([
+    //     'content' => 'Обновленный контент',
+    //     'updated_at' => Now()
+    // ]);
+
+    // Post::find(1)->delete();
+
+    //Post::destroy([2,3]);
 
     return 'Запись добавлена';
 });
