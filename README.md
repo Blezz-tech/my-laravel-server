@@ -111,3 +111,10 @@ php artisan code:models
 ```bash
 php artisan db:seed
 ```
+
+
+## :3
+
+```bash
+php artisan migrate:refresh && php artisan db:seed
+```
