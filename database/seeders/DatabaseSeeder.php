@@ -12,10 +12,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CountryTableSeeder::class);
-        $this->call(CountrylanguageTableSeeder::class);
+
+        // $this->call([
+        //     TagSeeder::class,
+        // ]);
+
         $this->call(GoodsTableSeeder::class);
         $this->call(PhotosTableSeeder::class);
-        $this->call(Review::class);
+        $this->call(PostsTableSeeder::class);
+        $this->call(ReviewsTableSeeder::class);
+        $this->call(RubricsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(CountryTableSeeder::class);
+        $this->call(CityTableSeeder::class);
+        $this->call(CountrylanguageTableSeeder::class);
     }
 }

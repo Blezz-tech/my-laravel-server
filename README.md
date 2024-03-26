@@ -61,13 +61,10 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## ПОМОЩЬ
-
-https://github.com/orangehill/iseed
-
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 
 
 
@@ -82,7 +79,7 @@ php artisan iseed <перечисление баз данных без проб�
 пример:
 
 ```bash
-php artisan iseed catalog_photo,cities,city,countries,country,countrylanguage,failed_jobs,goods,migrations,password_reset_tokens,personal_access_tokens,photos,posts,users
+php artisan iseed city,country,goods,photos,posts,reviews,rubrics,users,countrylanguage
 ```
 
 Помощь по [iseed](https://github.com/orangehill/iseed)

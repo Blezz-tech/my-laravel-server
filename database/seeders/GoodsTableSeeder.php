@@ -14,38 +14,31 @@ class GoodsTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('goods')->delete();
-
-        \DB::table('goods')->insert(array(
-            0 =>
-            array(
+        
+        \DB::table('goods')->insert(array (
+            0 => 
+            array (
                 'id' => 1,
                 'title' => 'мясо',
-                'description' => 'вкусное мяско',
+                'description' => 'вкусное',
                 'price' => '300.00',
-                'created_at' => '2024-01-16 10:05:50',
-                'updated_at' => '2024-01-16 10:05:50',
+                'created_at' => '2024-01-16 10:07:47',
+                'updated_at' => '2024-01-16 10:07:47',
             ),
-            1 =>
-            array(
+            1 => 
+            array (
                 'id' => 2,
-                'title' => 'сыр',
-                'description' => 'сливочный сырок',
-                'price' => '150.00',
-                'created_at' => '2024-01-16 10:05:50',
-                'updated_at' => '2024-01-16 10:05:50',
-            ),
-            2 =>
-            array(
-                'id' => 3,
-                'title' => 'картошка',
-                'description' => 'самая мягкая картошечка',
-                'price' => '80.00',
-                'created_at' => '2024-01-16 10:05:50',
-                'updated_at' => '2024-01-16 10:05:50',
+                'title' => 'молоко',
+                'description' => 'свежее',
+                'price' => '100.00',
+                'created_at' => '2024-01-16 10:07:47',
+                'updated_at' => '2024-01-16 10:07:47',
             ),
         ));
+        
+        
     }
 }

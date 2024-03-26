@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('countrylanguage', function (Blueprint $table) {
-            $table->foreign(['CountryCode'], 'countryLanguage_ibfk_1')->references(['Code'])->on('country')->onUpdate('restrict')->onDelete('restrict');
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('author', 100)->nullable();
+            $table->text('text')->default('Рецензия на статью не получена');
+            $table->unsignedInteger('post_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('countrylanguage', function (Blueprint $table) {
-            $table->dropForeign('countryLanguage_ibfk_1');
-        });
+        Schema::dropIfExists('reviews');
     }
 };

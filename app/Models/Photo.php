@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $path
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $description
  *
  * @package App\Models
  */
@@ -26,6 +27,7 @@ class Photo extends Model
 
 	protected $fillable = [
 		'name',
-		'path'
+		'path',
+		'description'
 	];
 }

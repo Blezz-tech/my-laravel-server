@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
-    <p>Ваши данные получены</p>
-    <?php
-    if (!empty($_POST)) {
-        dump($_POST);
-    }
-    ?>
+    <h1>Регистрация прошла успешно!</h1>
 </body>
-
 </html>

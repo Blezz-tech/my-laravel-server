@@ -16,6 +16,26 @@
         </div>
     </section>
 
+<div class="container">
+    <div class="col-sm-4 oftset-md-1 py-4">
+        <h4 class="text-white">Contact</h4>
+        <ul class="list-unstyled">
+        <li><a href="#" class="text-white">Follow on Twitter</a></li>
+        <li><a href="#" class="text-white">Like on Facebook</a></li>
+        <li><a href="about.html" class="text-white">About</a></li>
+
+        @auth
+        <li><a href="#">{{ Auth::user()->name }}</a></li>
+        <li><a href="{{route('logout')}}">Выйти</a></li>
+        @endauth
+
+        @guest
+        <li><a href="{{route("users.create")}}">Регистрация</a></li>
+        <li><a href="{{route("loginform")}}">Войти</a></li>
+        @endguest
+        </ul>
+    </div>
+</div>
     <div class="album py-5 bg-light">
         <div class="container">
 

@@ -63,6 +63,7 @@
     </p>
     <p class="mb-1">Album example &copy; {{date('Y')}}</p>
     <p class="mb-0">Подвал страницы {{$title}}</p>
+
   </div>
 </footer>
 

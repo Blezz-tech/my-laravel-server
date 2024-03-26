@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
         $request->session()->put('test', 'test value');
         $request->session()->put('cart', [
             ['id' => 1, 'product' => 'Coca cola'],
-            ['id' => 2, 'product' => 'Burger'],
+            ['id' => 2, 'product' => 'Burger']
         ]);
 
         $value1 = $request->session()->get('test');
@@ -39,14 +40,17 @@ class HomeController extends Controller
         $value3 = $request->session()->get('cart')[0]['product'];
         dump($value3);
 
-        $request->session()->push('cart', ['id' => 3, 'product' => 'Chips']);
+        $request->session()->push('cart', ['id' => 3, 'products' => 'Chips']);
 
         $value2 = $request->session()->get('cart');
         dump($value2);
 
-        //$value4 = $request->session()->pull('test');
+        // $value4 = $request->session()->pull('test');
+
+        dump($request->session()->all());
 
         $request->session()->forget('test');
+
         dump($request->session()->all());
 
         // 1. записать по заданному ключу значение по умолчанию
@@ -77,6 +81,7 @@ class HomeController extends Controller
         // $request->session()->decrement('number');
         // dump($request->session()->get('number'));
 
+
         // 4. увеличить и уменьшить значение, находящееся в сессии на заданное число
 
         $step = 6;
@@ -92,8 +97,10 @@ class HomeController extends Controller
 
         // 5. сохранить элементы в сессии только для следующего запроса.
 
+
         // $request->session()->flash('flash', "Ключ flash существует");
 
         dump($request->session()->get('flash'));
+
     }
 }

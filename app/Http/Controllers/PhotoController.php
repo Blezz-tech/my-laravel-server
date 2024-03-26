@@ -29,9 +29,16 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->parameters);
-        DB::insert('insert into photos (name, path) values (?, ?)', [$request->name, $request->path]);
-        return view('photos.accomplished', ['name' => $request->name, 'path' => $request->path]);
+        $validated = $request -> validate([
+            'name' => 'required|unique:photos|min:3|max:25',
+            'description' => 'required|max:255',
+            'path' => 'required|regex:/^img\/[a-z]{1,}\.png$/i',
+
+        ]);
+
+        DB::insert('insert into photos (name, description, path) values (?, ?, ?)', [$request->name, $request->description, $request->path]);
+        // dd($request);
+        // return view('photos.accomplished', ['name' => $request->name, 'path' => $request->path]);
     }
 
     /**
