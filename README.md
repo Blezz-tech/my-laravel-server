@@ -100,7 +100,11 @@ php artisan migrate:generate
 php artisan code:models
 ```
 
-Помощь по [Laracademy Generators](https://github.com/laracademy/generators)
+```bash
+php artisan code:models --table=
+```
+
+Помощь по [Reliese Laravel Model Generator](https://github.com/reliese/laravel)
 
 ## Загрузка сидеров в БД
 
