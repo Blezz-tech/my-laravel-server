@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PhotoController;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
@@ -144,3 +145,22 @@ Route::get('/showcities/{id}', function ($id) {
         'cities' => $cities
     ]);
 })->name('testcity');
+
+Route::get('/orders', function () {
+    $orders = Order::all();
+
+    return view('orders', [
+        'title' => "Города",
+        'orders' => $orders
+    ]);
+})->name('testcity');
+
+
+// Route::get('/order/{id}', function ($id) {
+//     $cities = Country::find($id)->cities;
+
+//     return view('showcities', [
+//         'title' => "Города",
+//         'cities' => $cities
+//     ]);
+// })->name('testcity');
