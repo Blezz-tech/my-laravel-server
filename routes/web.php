@@ -126,5 +126,9 @@ Route::get('testcountry/{id}', function ($id) {
 
 Route::get('/testcity/{id}', function ($id) {
     $data = City::find($id)->country;
-    dd($data);
+
+    return view('testcity', [
+        'title' => $data->title,
+        'data' => $data
+    ]);
 })->name('testcity');

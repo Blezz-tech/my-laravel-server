@@ -33,7 +33,7 @@
                                     <td>{{ $country->SurfaceArea }}</td>
                                     @if (!is_null($country->cities->first()))
                                         <td>
-                                            <a href="/testcity/{{$country->cities->first()->ID}}">
+                                            <a href="/testcity/{{ $country->cities->first()->ID }}">
                                                 <button>
                                                     {{ $country->cities->first()->Name }}
                                                 </button>
