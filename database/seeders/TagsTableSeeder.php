@@ -15,12 +15,32 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
 
+
         \DB::table('tags')->delete();
-        \DB::table('tags')->insert([
-            ['title' => 'Политика'],
-            ['title' => 'Здоровый образ жизни'],
-            ['title' => 'Отдых с семьей'],
-            ['title' => 'Романтические отношения'],
-        ]);
+
+        \DB::table('tags')->insert(array (
+            0 =>
+            array (
+                'id' => 1,
+                'title' => 'Политика',
+            ),
+            1 =>
+            array (
+                'id' => 2,
+                'title' => 'Здоровый образ жизни',
+            ),
+            2 =>
+            array (
+                'id' => 3,
+                'title' => 'Отдых с семьей',
+            ),
+            3 =>
+            array (
+                'id' => 4,
+                'title' => 'Романтические отношения',
+            ),
+        ));
+
+
     }
 }

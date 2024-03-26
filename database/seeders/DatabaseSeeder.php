@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CityTableSeeder::class);
         $this->call(CountrylanguageTableSeeder::class);
         $this->call(TagsTableSeeder::class);
-        $this->call(PostTagsTableSeeder::class);
+        $this->call(PostTagTableSeeder::class);
     }
 }
