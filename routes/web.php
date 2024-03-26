@@ -11,6 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PhotoController;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,27 +102,29 @@ Route::get('/testcountry', function (Request $request) {
 
     $data = [];
 
-    $country = Country::select('Name', 'Continent', 'SurfaceArea');
 
-    if (is_null($country_text) || $country == "") {
-        $data = $country->get();
+    if (is_null($country_text)) {
+        $data = Country::all();
     } else {
-        $data = $country->where('Name', 'like', $country_text . '%')->get();
+        $data = Country::where(
+            'Name',
+            'like',
+            $country_text . '%'
+        )->get();
     }
 
-
-
-    return view('testcountry', ['title' => 'Страны', 'countries' => $data]);
+    return view('testcountry', [
+        'title' => 'Страны',
+        'countries' => $data
+    ]);
 })->name('testcountry');
 
 Route::get('testcountry/{id}', function ($id) {
     $data = Country::find($id);
     dd($data);
-
 })->name('testcountry');
 
 Route::get('/testcity/{id}', function ($id) {
     $data = City::find($id)->country;
     dd($data);
-
 })->name('testcity');

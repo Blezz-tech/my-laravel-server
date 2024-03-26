@@ -22,6 +22,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Continent</th>
                                 <th scope="col">SurfaceArea</th>
+                                <th scope="col">City</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,17 @@
                                     <td>{{ $country->Name }}</td>
                                     <td>{{ $country->Continent }}</td>
                                     <td>{{ $country->SurfaceArea }}</td>
+                                    @if (!is_null($country->cities->first()))
+                                        <td>
+                                            <a href="/testcity/{{$country->cities->first()->ID}}">
+                                                <button>
+                                                    {{ $country->cities->first()->Name }}
+                                                </button>
+                                            </a>
+                                        </td>
+                                    @else
+                                        <td>Города нет</td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
