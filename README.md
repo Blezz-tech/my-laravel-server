@@ -82,8 +82,7 @@ php artisan iseed <перечисление баз данных без проб�
 пример:
 
 ```bash
-php artisan is
-eed catalog_photo,cities,city,countries,country,countrylanguage,failed_jobs,goods,migrations,password_reset_tokens,personal_access_tokens,photos,posts,users
+php artisan iseed catalog_photo,cities,city,countries,country,countrylanguage,failed_jobs,goods,migrations,password_reset_tokens,personal_access_tokens,photos,posts,users
 ```
 
 Помощь по [iseed](https://github.com/orangehill/iseed)

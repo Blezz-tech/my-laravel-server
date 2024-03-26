@@ -68,7 +68,7 @@ Route::get('testpost', function () {
 
     // Post::create(['title' => 'Интересная статья', 'content' => 'Текст интересной статьи']);
 
-    $result = Post::find(1);
+    $result = Post::find(2);
     dd($result);
 
     // $result = Post::where('title', 'Интересная статья')->select('content')->get();

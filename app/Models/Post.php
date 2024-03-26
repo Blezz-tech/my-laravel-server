@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Post
- * 
+ *
  * @property int $id
  * @property string $title
  * @property string $content
@@ -22,10 +22,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-	protected $table = 'posts';
+    protected $table = 'posts';
 
-	protected $fillable = [
-		'title',
-		'content'
-	];
+    protected $fillable = [
+        'title',
+        'content'
+    ];
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
+    }
 }
