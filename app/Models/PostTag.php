@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PostTag
- *
+ * 
  * @property int $post_id
  * @property int $tag_id
  *
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PostTag extends Model
 {
-	protected $table = 'post_tags';
+	protected $table = 'post_tag';
 	public $incrementing = false;
 	public $timestamps = false;
 
