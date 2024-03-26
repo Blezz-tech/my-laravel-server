@@ -132,3 +132,14 @@ Route::get('/testcity/{id}', function ($id) {
         'data' => $data
     ]);
 })->name('testcity');
+
+
+
+Route::get('/showcities/{id}', function ($id) {
+    $cities = Country::find($id)->cities;
+
+    return view('showcities', [
+        'title' => "Города",
+        'cities' => $cities
+    ]);
+})->name('testcity');

@@ -23,6 +23,7 @@
                                 <th scope="col">Continent</th>
                                 <th scope="col">SurfaceArea</th>
                                 <th scope="col">City</th>
+                                <th scope="col">All Cities</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,8 +40,14 @@
                                                 </button>
                                             </a>
                                         </td>
+                                        <td>
+                                            <a href="/showcities/{{ $country->Code }}">
+                                                <button>Города</button>
+                                            </a>
+                                        </td>
                                     @else
                                         <td>Города нет</td>
+                                        <td>Городов нет</td>
                                     @endif
                                 </tr>
                             @endforeach
