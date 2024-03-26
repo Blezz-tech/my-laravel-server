@@ -5,7 +5,7 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <h2>Состав заказа</h2>
-            @if (count($items) == 0)
+            @if (count($products) == 0)
                 <div class="mt-3">
                     <div class="alert alert-warning">Состав пустой</div>
                 </div>
@@ -21,12 +21,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($items as $item)
+                            @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $item->product->prod_name }}</td>
-                                    <td>{{ $item->product->vendor->vend_name }}</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td>{{ $item->item_price }}</td>
+                                    <td>{{ $product->prod_name }}</td>
+                                    <td>{{ $product->vendor->vend_name }}</td>
+                                    <td>{{ $product->pivot->quantity }}</td>
+                                    <td>{{ $product->pivot->item_price }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

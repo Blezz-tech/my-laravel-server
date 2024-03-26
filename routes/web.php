@@ -162,7 +162,7 @@ Route::get('/order/{id}', function ($id) {
 
     return view('order', [
         'title' => "Города",
-        'items' => $order->order_items
+        'products' => $order->products
     ]);
 })->name('order');
 

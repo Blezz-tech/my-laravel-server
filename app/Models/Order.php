@@ -38,28 +38,33 @@ class Order extends Model
         return $formatter->format($this->order_date);
     }
 
-	protected $table = 'Orders';
-	protected $primaryKey = 'order_num';
-	public $incrementing = false;
-	public $timestamps = false;
+    protected $table = 'Orders';
+    protected $primaryKey = 'order_num';
+    public $incrementing = false;
+    public $timestamps = false;
 
-	protected $casts = [
-		'order_num' => 'int',
-		'order_date' => 'datetime'
-	];
+    protected $casts = [
+        'order_num' => 'int',
+        'order_date' => 'datetime'
+    ];
 
-	protected $fillable = [
-		'order_date',
-		'cust_id'
-	];
+    protected $fillable = [
+        'order_date',
+        'cust_id'
+    ];
 
-	public function customer()
-	{
-		return $this->belongsTo(Customer::class, 'cust_id');
-	}
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'cust_id');
+    }
 
-	public function products()
-	{
-		return $this->belongsToMany(Product::class, 'prod_id');
-	}
+    public function products()
+    {
+        return $this->belongsToMany(
+            Product::class,
+            'OrderItems',
+            'order_num',
+            'prod_id'
+        )->withPivot('quantity', 'item_price');
+    }
 }
