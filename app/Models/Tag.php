@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Tag
- * 
+ *
  * @property int $id
  * @property string $title
  *
@@ -18,10 +18,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
-	protected $table = 'tags';
-	public $timestamps = false;
+    protected $table = 'tags';
+    public $timestamps = false;
 
-	protected $fillable = [
-		'title'
-	];
+    protected $fillable = [
+        'title'
+    ];
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }
