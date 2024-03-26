@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Review;
 use App\Models\Rubric;
+use IntlDateFormatter;
 
 /**
  * Class Post
@@ -25,6 +26,19 @@ use App\Models\Rubric;
  */
 class Post extends Model
 {
+    public function getPostDate()
+    {
+        $formatter = new IntlDateFormatter(
+            'ru_RU',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            'Europe/Moscow',
+            IntlDateFormatter::GREGORIAN,
+            'dd MMM yyyy'
+        );
+        return $formatter->format($this->created_at);
+    }
+
     protected $table = 'posts';
 
     protected $casts = [

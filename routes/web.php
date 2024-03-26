@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PhotoController;
 use App\Models\Order;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
@@ -164,3 +165,13 @@ Route::get('/order/{id}', function ($id) {
         'items' => $order->order_items
     ]);
 })->name('order');
+
+Route::get('/testtag/{id}', function ($id) {
+    $tag = Tag::find($id);
+    dump($tag->title);
+
+    foreach ($tag->posts as $x) {
+        dump($x->title);
+        dump($x->getPostDate());
+    }
+})->name('tags');

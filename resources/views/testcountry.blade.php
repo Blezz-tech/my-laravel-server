@@ -35,14 +35,14 @@
                                     @if (!is_null($country->cities->first()))
                                         <td>
                                             <a href="/testcity/{{ $country->cities->first()->ID }}">
-                                                <button>
+                                                <button type="button" class="btn btn-primary">
                                                     {{ $country->cities->first()->Name }}
                                                 </button>
                                             </a>
                                         </td>
                                         <td>
                                             <a href="/showcities/{{ $country->Code }}">
-                                                <button>Города</button>
+                                                <button type="button" class="btn btn-primary">Города</button>
                                             </a>
                                         </td>
                                     @else

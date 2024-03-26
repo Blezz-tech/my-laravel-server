@@ -28,7 +28,9 @@
                                     <td>{{ $order->cust_id }}</td>
                                     <td>
                                         <a href="/order/{{ $order->order_num }}">
-                                            <button>Состав заказа</button>
+                                            <button type="button" class="btn btn-primary">
+                                                Состав заказа
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>
