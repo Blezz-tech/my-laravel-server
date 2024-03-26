@@ -15,7 +15,8 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
 
-        DB::table('tags')->insert([
+        \DB::table('tags')->delete();
+        \DB::table('tags')->insert([
             ['title' => 'Политика'],
             ['title' => 'Здоровый образ жизни'],
             ['title' => 'Отдых с семьей'],

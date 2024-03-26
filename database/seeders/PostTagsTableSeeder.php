@@ -15,7 +15,8 @@ class PostTagsTableSeeder extends Seeder
     public function run()
     {
 
-        DB::table('post_tag')->insert([
+        \DB::table('post_tags')->delete();
+        \DB::table('post_tags')->insert([
             ['post_id' => 4, 'tag_id' => 1],
             ['post_id' => 4, 'tag_id' => 2],
             ['post_id' => 4, 'tag_id' => 3],
