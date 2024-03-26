@@ -90,11 +90,12 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 Route::get('testpost/{id}', function ($id) {
-    $data = Review::find($id)->post;
-    dd($data);
+    $post = Post::find($id);
+    dump($post->title);
 
-    // $data = Post::find($id)->rubric();
-    // dd($data);
+    foreach ($post->tags as $x) {
+        dump($x->title);
+    }
 })->name('testpost');
 
 Route::get('/testcountry', function (Request $request) {
