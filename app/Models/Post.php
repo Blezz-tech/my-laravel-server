@@ -40,6 +40,7 @@ class Post extends Model
     }
 
     protected $table = 'posts';
+    protected $primaryKey = 'id';
 
     protected $casts = [
         'rubric_id' => 'int'
@@ -63,6 +64,11 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(
+            Tag::class,
+            'post_tag',
+            'post_id',
+            'tag_id'
+        );
     }
 }
