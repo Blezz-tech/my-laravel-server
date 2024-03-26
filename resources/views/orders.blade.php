@@ -24,7 +24,7 @@
                             @foreach ($orders as $order)
                                 <tr>
                                     <td>{{ $order->order_num }}</td>
-                                    <td>{{ $order->order_date }}</td>
+                                    <td>{{ $order->getOrderDate() }}</td>
                                     <td>{{ $order->cust_id }}</td>
                                     <td>
                                         <a href="/order/{{ $order->order_num }}">

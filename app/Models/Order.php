@@ -9,14 +9,15 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use IntlDateFormatter;
 
 /**
  * Class Order
- * 
+ *
  * @property int $order_num
  * @property Carbon $order_date
  * @property string $cust_id
- * 
+ *
  * @property Customer $customer
  * @property Collection|OrderItem[] $order_items
  *
@@ -24,6 +25,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
+    public function getOrderDate()
+    {
+        $formatter = new IntlDateFormatter(
+            'ru_RU',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            'Europe/Moscow',
+            IntlDateFormatter::GREGORIAN,
+            'dd MMM yyyy, eeee'
+        );
+        return $formatter->format($this->order_date);
+    }
+
 	protected $table = 'Orders';
 	protected $primaryKey = 'order_num';
 	public $incrementing = false;
