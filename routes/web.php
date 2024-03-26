@@ -153,14 +153,14 @@ Route::get('/orders', function () {
         'title' => "Города",
         'orders' => $orders
     ]);
-})->name('testcity');
+})->name('orders');
 
 
-// Route::get('/order/{id}', function ($id) {
-//     $cities = Country::find($id)->cities;
+Route::get('/order/{id}', function ($id) {
+    $order = Order::find($id);
 
-//     return view('showcities', [
-//         'title' => "Города",
-//         'cities' => $cities
-//     ]);
-// })->name('testcity');
+    return view('order', [
+        'title' => "Города",
+        'items' => $order->order_items
+    ]);
+})->name('order');
