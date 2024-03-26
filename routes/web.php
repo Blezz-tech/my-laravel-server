@@ -93,6 +93,8 @@ Route::get('testpost/{id}', function ($id) {
     $post = Post::find($id);
     dump($post->title);
 
+    dd($post->tags);
+
     foreach ($post->tags as $x) {
         dump($x->title);
     }
