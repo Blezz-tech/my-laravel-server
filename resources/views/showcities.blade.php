@@ -9,8 +9,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Город</th>
-                        {{-- <th scope="col">Континет</th>
-                        <th scope="col">Регион</th> --}}
                         <th scope="col">население</th>
                     </tr>
                 </thead>
@@ -18,8 +16,6 @@
                     @foreach ($cities as $city)
                         <tr>
                             <td>{{ $city->Name }}</td>
-                            {{-- <td>{{ $city->Continent }}</td>
-                            <td>{{ $city->Region }}</td> --}}
                             <td>{{ $city->Population }}</td>
                         </tr>
                     @endforeach
