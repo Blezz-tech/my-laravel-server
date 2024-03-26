@@ -15,6 +15,10 @@
             inherit inputs pkgs;
             modules = [{
 
+              packages = with pkgs; [
+                mysql-workbench
+              ];
+
               languages.php = {
                 enable = true;
                 version = "8.1";
