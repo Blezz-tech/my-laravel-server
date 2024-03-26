@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Product
- * 
+ *
  * @property string $prod_id
  * @property string $vend_id
  * @property string $prod_name
  * @property float $prod_price
  * @property string|null $prod_desc
- * 
+ *
  * @property Vendor $vendor
  * @property Collection|OrderItem[] $order_items
  *
@@ -46,8 +46,8 @@ class Product extends Model
 		return $this->belongsTo(Vendor::class, 'vend_id');
 	}
 
-	public function order_items()
+	public function orders()
 	{
-		return $this->hasMany(OrderItem::class, 'prod_id');
+		return $this->belongsToMany(Order::class, 'order_num');
 	}
 }
